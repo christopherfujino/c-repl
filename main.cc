@@ -1,6 +1,6 @@
+#include <cstdio>
+#include <cstdlib> // for exit()
 #include <dlfcn.h> // for dlopen()
-#include <stdio.h>
-#include <stdlib.h> // for exit()
 
 #include "ffi.h"
 

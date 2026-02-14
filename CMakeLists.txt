@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_compile_options(-Wall -Werror -Wpedantic -Wextra)
 
-add_executable(main main.c)
+add_executable(main main.cc)
 
 # TODO make this portable
 target_link_libraries(main
