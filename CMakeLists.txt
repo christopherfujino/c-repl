@@ -12,6 +12,12 @@ add_compile_options(-Wall -Werror -Wpedantic -Wextra)
 
 add_executable(main main.c)
 
+# TODO make this portable
+target_link_libraries(main
+  ${CMAKE_CURRENT_SOURCE_DIR}/ignore/libffi/aarch64-unknown-linux-gnu/.libs/libffi.a)
+target_include_directories(main BEFORE PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/ignore/libffi/aarch64-unknown-linux-gnu/include)
+
 #target_link_libraries(main PRIVATE lib)
 #
 #add_library(lib lib.cpp)
