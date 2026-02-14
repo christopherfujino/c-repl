@@ -8,7 +8,7 @@ void dynamicCall(void (*fn)(void), int argc, void **argv, ffi_type **argTypes,
                  void *retValue) {
   ffi_cif cif;
   ffi_status status =
-      ffi_prep_cif(&cif, FFI_DEFAULT_ABI, argc, &ffi_type_sint, argTypes);
+      ffi_prep_cif(&cif, FFI_DEFAULT_ABI, argc, &ffi_type_sint /* TODO */, argTypes);
   if (status != FFI_OK) {
     fprintf(stderr, "Failed to call ffi_prep_cif\n");
     exit(1);
@@ -41,11 +41,11 @@ int main(void) {
   // rvalue is ignored.
 
   const char *arg = "Hello from libffi!";
-  // const char** args = {&arg};
-  void *args[1];
-  args[0] = (void *)arg;
+  void* args[1] = {(void *)&arg};
+  //void *args[1];
+  //args[0] = &arg;
   ffi_type *argTypes[1] = {&ffi_type_pointer};
-  int retValue;
+  ffi_arg retValue;
   dynamicCall((void (*)(void))_puts, 1, args, argTypes, &retValue);
 
   // TODO check retValue
