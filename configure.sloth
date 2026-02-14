@@ -4,6 +4,12 @@ let cxx = 'clang++'
 let release = 'Debug'
 let build = Directory("${ $scriptDir }/build")
 
+let libffi = Directory("${ $scriptDir }/ignore/libffi")
+
+if not libffi.exists() {
+  "${ $scriptDir }/tool/bootstrap.sloth"!
+}
+
 if not build.exists() {
   build.create()
   with($cwd = build.path) {

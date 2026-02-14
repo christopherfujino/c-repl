@@ -1,7 +1,7 @@
 ## Build deps
 
 ```
-# libffi deps
+# libffi build deps
 apt-get install \
     autoconf \
     automake \
